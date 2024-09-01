@@ -19,7 +19,7 @@ class Project(
     // val achievement: Achievement
     // achievement.id
 
-    var name: String? = name
+    var name: String = name
 
     var description: String? = description
 
@@ -33,15 +33,11 @@ class Project(
 
     var isActive: Boolean = isActive
 
-    @OneToMany(
-        targetEntity = ProjectDetail::class,
-        fetch = FetchType.LAZY,// lazy 연관관계 있을때만 ㅇㅇ
-        cascade = [CascadeType.ALL]
-    ) // 영속성 같이 넣어줌
+    @OneToMany(targetEntity = ProjectDetail::class, fetch = FetchType.LAZY, cascade = [CascadeType.PERSIST])
     @JoinColumn(name = "project_id")
-    var details: MutableList<ProjectDetail> = mutableListOf() // 데이터를 넣고 빼고 가능
+    var details: MutableList<ProjectDetail> = mutableListOf()
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = [CascadeType.PERSIST])
     var skills: MutableList<ProjectSkill> = mutableListOf()
 
     fun getEndYearMonth(): String {

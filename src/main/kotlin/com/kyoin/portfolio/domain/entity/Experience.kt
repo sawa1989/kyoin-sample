@@ -19,9 +19,9 @@ class Experience(
     // val achievement: Achievement
     // achievement.id
 
-    var title: String? = title
+    var title: String = title
 
-    var description: String? = description
+    var description: String = description
 
     var startYear: Int = startYear
 
