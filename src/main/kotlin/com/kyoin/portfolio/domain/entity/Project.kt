@@ -21,7 +21,7 @@ class Project(
 
     var name: String = name
 
-    var description: String? = description
+    var description: String = description
 
     var startYear: Int = startYear
 
