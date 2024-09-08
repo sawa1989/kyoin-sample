@@ -1,6 +1,7 @@
 package com.kyoin.portfolio.admin.context.project.service
 
 import com.kyoin.portfolio.admin.data.TableDTO
+import com.kyoin.portfolio.admin.exception.AdminBadReqeustException
 import com.kyoin.portfolio.domain.entity.Project
 import com.kyoin.portfolio.domain.entity.ProjectDetail
 import com.kyoin.portfolio.domain.repository.ProjectRepository
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service
 class AdminProjectService(
     private val projectRepository: ProjectRepository
 ) {
+
     fun getProjectTable(): TableDTO {
         val classInfo = Project::class
         val entities = projectRepository.findAll()
@@ -26,6 +28,4 @@ class AdminProjectService(
 
         return TableDTO.from(classInfo, entities)
     }
-
-
 }
